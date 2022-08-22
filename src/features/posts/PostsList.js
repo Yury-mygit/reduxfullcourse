@@ -7,10 +7,8 @@ import ReactionButtons from "./ReactionButtons";
 
 const PostsList = () => {
     
-    // const posts = useSelector(state=> state.posts)
     const posts = useSelector(selectAllPosts)
-    
-    console.log(posts)
+
     const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
 
     const renderedPosts = orderedPosts.map(post => (
@@ -27,8 +25,6 @@ const PostsList = () => {
 
         </article>
     ))
-
-    // console.log(renderedPosts)
  
     return (
         <section>
