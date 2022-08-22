@@ -37,9 +37,9 @@ const AddPostForm = () => {
     ))
 
     return (
-        <section>
+        <section style={{display: 'flex', flexDirection:'column', }}>
             <h2>Add a New Post</h2>
-            <form>
+            <form style={{display: 'flex', flexDirection:'column'}}>
                 <label htmlFor="postTitle">Post Title:</label>
                 <input
                     type="text"

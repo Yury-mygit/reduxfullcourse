@@ -4,7 +4,7 @@ import PostsList from "./features/posts/PostsList";
 
 function App() {
   return (
-    <div >
+    <div style={{display: 'flex', flexDirection:'column', width:'400px'}}>
       <AddPostForm/>
        <PostsList/>
 
