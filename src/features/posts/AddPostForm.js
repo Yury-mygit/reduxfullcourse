@@ -27,13 +27,10 @@ const AddPostForm = () => {
             setContent('')
         }
     }
-    
     const canSave = Boolean(title) && Boolean(content) && Boolean(userId)
 
     const usersOptions = users.map(user => (
-        <option key={user.id} value={user.id}>
-            {user.name}
-        </option>
+        <option key={user.id} value={user.id}>    {user.name}    </option>
     ))
 
     return (
@@ -50,11 +47,11 @@ const AddPostForm = () => {
                 />
 
                 <label htmlFor="postAuthor">Author:</label>
+                
                 <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
                     <option value=""></option>
                     {usersOptions}
                 </select>
-
 
                 <label htmlFor="postContent">Content:</label>
                 <textarea
