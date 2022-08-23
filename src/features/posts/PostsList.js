@@ -1,34 +1,45 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectAllPosts, getPostsStatus, getPostsError, fetchPosts } from "./postsSlice";
+import { useEffect } from "react";
+
+import PostsExcerpt from "./PostsExcerpt";
+
 import PostAuthor from "./PostAuthor";
-import { selectAllPosts } from "./postsSlice";
 import TimeAgo from './TimeAgo'
 import ReactionButtons from "./ReactionButtons";
 
 const PostsList = () => {
     
     const posts = useSelector(selectAllPosts)
+    const postStatus = useSelector(getPostsStatus)
+    const error = useSelector(getPostsError)
+    const dispath = useDispatch();
 
-    const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))
+    useEffect(()=>{
+        if (postStatus==='idle') {
+            dispath(fetchPosts())
+        }
+    },[postStatus, dispath])
 
-    const renderedPosts = orderedPosts.map(post => (
-        <article key={post.id} style={{border:'1px solid black', margin:'20px 0px 0px 0px', padding:'10px 10px 10px 10px', }}>
-            <h3>{post.title}</h3>
-            <p> {post.content.substring(0, 100)}</p>
-            <div style={{display: 'flex', flexGrow: '1'}}>
-            <p style={{ flexGrow: '1'}}><PostAuthor userId={post.userId}/>  </p>
-            <p style={{ flexGrow: '1'}}><TimeAgo timestamp={post.date}/>  </p>
 
-            </div>
-            
-            <ReactionButtons post={post}/>
 
-        </article>
-    ))
- 
+    let content;
+    if (postStatus === 'loading') {content= <p>Loading...</p>}
+    else if (postStatus === 'succeeded') { 
+        const orderedPosts = posts.slice().sort((a,b)=>b.date.localeCompare(a.date))
+        content = orderedPosts.map(post => <PostsExcerpt key={post.id} post={post}/>) 
+    }
+    else if (postStatus === 'failed'){
+        content = <p>{error}</p>
+    }
+    
+
+
     return (
         <section>
             <h2>Posts</h2>
-            {renderedPosts}
+            {content}
         </section>
     );
 };
