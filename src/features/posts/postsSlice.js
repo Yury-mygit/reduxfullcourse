@@ -11,10 +11,10 @@ import axios from "axios";
 const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
 
 const postsAdapter = createEntityAdapter({
-    sortComparer:(a,b)=> b.date.localeCompare(a.data)
+    sortComparer: (a, b)=> b.date.localeCompare(a.data)
 })
 
-const initialState =postsAdapter.getInitialState({
+const initialState = postsAdapter.getInitialState({
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
     count: 0,
@@ -82,7 +82,7 @@ const postsSliсe = createSlice({
         },
         reactionAdded(state, action) {
             const { postId, reaction } = action.payload
-            const existingPost = state.entries(postId)
+            const existingPost = state.entities[postId]
             if (existingPost) {
                 existingPost.reactions[reaction]++
             }
@@ -114,7 +114,7 @@ const postsSliсe = createSlice({
 
                 // Add any fetched posts to the array
                 // state.posts = state.posts.concat(loadedPosts)
-                postsAdapter.updateMany(state,loadedPosts)
+                postsAdapter.upsertMany(state,loadedPosts)
             })
             .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = 'failed'
