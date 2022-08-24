@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { startOfSecond } from "date-fns";
 
 const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
 
@@ -22,5 +23,8 @@ const usersSlice = createSlice({
 })
 
 export const selectAllUsers = (state) => state.users;
+
+export const selectUserById = (state, userId) =>
+    state.users.find(user => user.id === userId)
 
 export default usersSlice.reducer
