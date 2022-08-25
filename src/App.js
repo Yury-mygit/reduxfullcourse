@@ -1,9 +1,9 @@
-import PostsList from "./features/posts/PostsList";
-import AddPostForm from "./features/posts/AddPostForm";
-import SinglePostPage from "./features/posts/SinglePostPage";
-import EditPostForm from "./features/posts/EditPostForm";
-import UsersList from "./features/users/UsersList";
-import UserPage from './features/users/UserPage';
+import PostsList from "./features/posts/view/PostsList";
+import AddPostForm from "./features/posts/view/AddPostForm";
+import SinglePostPage from "./features/posts/view/SinglePostPage";
+import EditPostForm from "./features/posts/view/EditPostForm";
+import UsersList from "./features/users/views/UsersList";
+import UserPage from './features/users/views/UserPage';
 import Layout from "./components/Layout";
 import { Routes, Route, Navigate } from 'react-router-dom';
 

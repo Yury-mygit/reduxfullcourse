@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
-import { increaseCount, getCount } from "../features/posts/postsSlice"
+import { increaseCount, getCount } from "../features/posts/controller/postsSlice"
 
 const Header = () => {
     const dispatch = useDispatch()
