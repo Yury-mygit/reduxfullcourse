@@ -6,7 +6,6 @@ function App() {
     <div style={{display: 'flex', flexDirection:'column', width:'400px'}}>
       <AddPostForm/>
        <PostsList/>
-
     </div>
   );
 }

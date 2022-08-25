@@ -105,7 +105,7 @@ const postsSliсe = createSlice({
                         rocket: 0,
                         coffee: 0
                 }
-                console.log(action.payload)
+                // console.log(action.payload)
                 state.posts.push(action.payload)
             })
     }
@@ -114,7 +114,6 @@ const postsSliсe = createSlice({
 export const selectAllPosts = state =>state.posts.posts;
 export const getPostsStatus = state =>state.posts.status;
 export const getPostsError = state =>state.posts.error;
-
 
 export const {postAdded, reactionAdded} = postsSliсe.actions
 export default postsSliсe.reducer
