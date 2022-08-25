@@ -28,10 +28,8 @@ const AddPostForm = () => {
                 setTitle('')
                 setContent('')
                 setUserId('')
-            } catch (err) {
-                console.error('Failed to save the post', err)
-            } finally {
-                setAddRequestStatus('idle')
+            } catch (err) {  console.error('Failed to save the post', err)
+            } finally {  setAddRequestStatus('idle')
             }
         }
     }
