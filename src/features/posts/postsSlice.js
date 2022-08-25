@@ -52,7 +52,6 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (initialPos
     }
 })
 
-
 const postsSliсe = createSlice({
     name: 'posts',
     initialState,
@@ -179,9 +178,8 @@ export const getPostsError = state =>state.posts.error;
 export const getCount = state => state.posts.count;
 
 // export const selectPostById = (state, postId) => 
-//         state.posts.posts.find( post=>post.id === postId);
-
-//getSelectors creates these selectors and we rename them with aliases using destructuring
+// state.posts.posts.find( post=>post.id === postId);
+// getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
     selectAll: selectAllPosts,
     selectById: selectPostById,
